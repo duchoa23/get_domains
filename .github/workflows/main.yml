@@ -27,8 +27,5 @@ jobs:
       run: |
         python filter_domains.py
 
-    - name: Upload filtered domains
-      uses: actions/upload-artifact@v3
-      with:
-        name: filtered-domains
-        path: filtered_domains.txt
+    - name: List files
+      run: ls -la
