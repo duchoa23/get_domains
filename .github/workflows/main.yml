@@ -1,4 +1,4 @@
-name: Run Filter Domains
+name: Run Filter Domains and Push Results
 
 on:
   push:
@@ -25,10 +25,17 @@ jobs:
         pip install requests
 
     - name: Run filter_domains.py
-      run: python filter_domains.py
+      run: python get_domains/filter_domains.py
 
-    - name: Upload domain.txt
-      uses: actions/upload-artifact@v3
-      with:
-        name: domain-file
-        path: dom
+    - name: Configure Git
+      run: |
+        git config --global user.name 'github-actions'
+        git config --global user.email 'github-actions@github.com'
+
+    - name: Commit and push changes
+      run: |
+        git add get_domains/domain.txt
+        git commit -m 'Update domain.txt with latest filtered domains'
+        git push origin main
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
