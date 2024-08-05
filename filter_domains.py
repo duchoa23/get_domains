@@ -1,6 +1,4 @@
 import requests
-import re
-import os
 
 # Danh sách các domain và subdomain cần tìm
 domains = [
