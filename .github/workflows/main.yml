@@ -25,7 +25,7 @@ jobs:
         pip install requests
 
     - name: Run filter_domains.py
-      run: python get_domains/filter_domains.py
+      run: python filter_domains.py  # Đường dẫn đã đúng
 
     - name: Configure Git
       run: |
@@ -34,7 +34,7 @@ jobs:
 
     - name: Commit and push changes
       run: |
-        git add get_domains/domain.txt
+        git add domain.txt  # Đường dẫn đã đúng
         git commit -m 'Update domain.txt with latest filtered domains'
         git push origin main
       env:
