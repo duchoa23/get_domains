@@ -1,5 +1,6 @@
 import requests
 import re
+import os
 
 # Danh sách các domain và subdomain cần tìm
 domains = [
@@ -34,7 +35,12 @@ for url in urls:
             filtered_domains.add(url)
             break
 
+# Đường dẫn tới file filtered_domains.txt
+output_file = 'filtered_domains.txt'
+
 # Ghi kết quả vào file
-with open('filtered_domains.txt', 'w') as f:
+with open(output_file, 'w') as f:
     for domain in filtered_domains:
         f.write(f"{domain}\n")
+
+print(f"Filtered domains have been written to {output_file}")
